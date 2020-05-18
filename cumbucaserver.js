@@ -36,7 +36,7 @@ var client = new Twitter({
  * Stream statuses filtered by keyword
  * number of tweets per second depends on topic popularity
  **/
-router.get("/search/:tweet", function (req, res) {
+app.get("/search/:tweet", function (req, res) {
  client.get('search/tweets', {q: req.params.tweet, count: 50}, function(error, tweets, response) {
    console.log(tweets);
   });
