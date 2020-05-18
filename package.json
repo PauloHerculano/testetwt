@@ -5,7 +5,8 @@
   "main": "cumbucaserver.js",
   "dependencies": {
     "express": "^4.17.1",
-    "twit": "^2.2.11"
+    "twit": "^2.2.11",
+    "body-parser": "^1.19.0"
   },
   "devDependencies": {},
   "scripts": {
