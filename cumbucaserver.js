@@ -32,12 +32,12 @@ var client = new Twitter({
   access_token_secret: 'XRMIAtESEjI91M4w7xOshmY4o375mhJemwfh7o2eSt1iO'
 });
 
-var content = req.query.text;
-
 /**
  * Stream statuses filtered by keyword
  * number of tweets per second depends on topic popularity
  **/
-client.get('search/tweets', {q: content }, function(error, tweets, response) {
+router.get("/search/:tweet", function (req, res) {
+ client.get('search/tweets', {q: req.params.tweet, count: 50}, function(error, tweets, response) {
    console.log(tweets);
-});
+  });
+})
