@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 
 console.log("Example is up now..")
 var Twit = require('twit');
-var config = require('./config')
+var config = require('./config');
 var T = new Twit(config);
 var tweet;
 
@@ -37,3 +37,4 @@ app.get("/search/:tweet", function (req, res) {
       tweets: tweets
     });
   });
+  })
