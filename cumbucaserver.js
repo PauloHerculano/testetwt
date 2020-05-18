@@ -2,8 +2,9 @@ console.log("Example is up now..")
 var Twit = require('twit');
 var config = require('./config')
 var T = new Twit(config);
+var content = 'nba';
 var params = { 
-q: 'akshay',
+q: content,
  count: 100 
 }
 
