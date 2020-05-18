@@ -6,13 +6,6 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 
-console.log("Example is up now..")
-var Twit = require('twit');
-var config = require('./config');
-var T = new Twit(config);
-var tweet;
-
-
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader(
@@ -30,11 +23,21 @@ app.listen(5000, function () {
   console.log('Example app listening on port 5000!');
 });
 
-app.get("/search/:tweet", function (req, res) {
-  client.get('search/tweets', {q: req.params.tweet, count: 50}, function(error, tweets, response) {
-    res.status(201).json({
-      message: 'Tweets',
-      tweets: tweets
-    });
-  });
-  })
+var Twitter = require('twitter');
+
+var client = new Twitter({
+  consumer_key: rsR0TooAJf4l9jU2Nyjy1dqcY,
+  consumer_secret: GEYUJYbk7gDCrVfRYxksxh9l4ZVaWB2TvyC3H2YHDYiQ2hZmzr,
+  access_token_key: 1201664563500011521-QtBqkSeJe4WZcb1Q6XFIZH0oSg92Wj,
+  access_token_secret: XRMIAtESEjI91M4w7xOshmY4o375mhJemwfh7o2eSt1iO
+});
+
+var content = req.query.text;
+
+/**
+ * Stream statuses filtered by keyword
+ * number of tweets per second depends on topic popularity
+ **/
+client.get('search/tweets', {q: content }, function(error, tweets, response) {
+   console.log(tweets);
+});
